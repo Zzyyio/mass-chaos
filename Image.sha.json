@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "passes": {
+    "common": {
+      "path": "Common.glsl"
+    },
+    "BufferA": {
+      "path": "BufferA.glsl",
+      "resolution": {
+        "width": 1568,
+        "height": 224
+      },
+      "inputs": {
+        "iChannel0": {
+          "type": "buffer",
+          "source": "BufferA",
+          "filter": "nearest"
+        }
+      }
+    },
+    "Image": {
+      "inputs": {
+        "iChannel0": {
+          "type": "buffer",
+          "source": "BufferA",
+          "filter": "nearest"
+        }
+      }
+    }
+  }
+}
