@@ -1,4 +1,4 @@
-// Self feedback, 1568 x 224. State: (position,velocity) x3,
+// Self feedback, 3136 x 448. State: (position,velocity) x3,
 // (tangent position,tangent velocity) x3, (time,Y,mean Y,initialized).
 void mainImage(out vec4 color, in vec2 pixel) {
     ivec2 cell = ivec2(pixel);
@@ -10,9 +10,13 @@ void mainImage(out vec4 color, in vec2 pixel) {
     vec4 s[3], d[3];
     vec4 metric = texelFetch(iChannel0,base+ivec2(6,0),0);
     if (iFrame == 0 || metric.w != 1.0) {
-        s[0]=vec4(0,.62,-.95,0);
-        s[1]=vec4(-.54,-.31,.48,-.82);
-        s[2]=vec4(.54,-.31,.48,.82);
+        // s[0]=vec4(0,.62,-.95,0);
+        // s[1]=vec4(-.54,-.31,.48,-.82);
+        // s[2]=vec4(.54,-.31,.48,.82);
+        s[0]=vec4(0.5,0.5,0.5,0);
+        s[1]=vec4(0.5,0,0,0.5);
+        s[2]=vec4(0,0,0,-0.5);
+
         vec4 center = mu.x*s[0]+mu.y*s[1]+mu.z*s[2];
         // Internal perturbation, with the center-of-mass displacement removed.
         float norm0 = length(vec3(1.0-mu.x,-mu.x,-mu.x));

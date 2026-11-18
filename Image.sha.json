@@ -7,8 +7,8 @@
     "BufferA": {
       "path": "BufferA.glsl",
       "resolution": {
-        "width": 1568,
-        "height": 224
+        "width": 3584,
+        "height": 512
       },
       "inputs": {
         "iChannel0": {
@@ -18,11 +18,58 @@
         }
       }
     },
+    "BufferB": {
+      "path": "BufferB.glsl",
+      "resolution": {
+        "width": 512,
+        "height": 512
+      },
+      "inputs": {
+        "iChannel0": {
+          "type": "buffer",
+          "source": "BufferA",
+          "filter": "nearest"
+        }
+      }
+    },
+    "BufferC": {
+      "path": "BufferC.glsl",
+      "resolution": {
+        "width": 512,
+        "height": 512
+      },
+      "inputs": {
+        "iChannel0": {
+          "type": "buffer",
+          "source": "BufferB",
+          "filter": "nearest"
+        }
+      }
+    },
+    "BufferD": {
+      "path": "BufferD.glsl",
+      "resolution": {
+        "width": 2,
+        "height": 1
+      },
+      "inputs": {
+        "iChannel0": {
+          "type": "buffer",
+          "source": "BufferC",
+          "filter": "nearest"
+        }
+      }
+    },
     "Image": {
       "inputs": {
         "iChannel0": {
           "type": "buffer",
           "source": "BufferA",
+          "filter": "nearest"
+        },
+        "iChannel1": {
+          "type": "buffer",
+          "source": "BufferD",
           "filter": "nearest"
         }
       }
